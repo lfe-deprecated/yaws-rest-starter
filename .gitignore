@@ -1,0 +1,9 @@
+deps
+*.sublime-project
+*.sublime-workspace
+*.beam
+.eunit
+debug-*
+ebin/*
+bin/expm
+logs/*.*
