@@ -3,13 +3,18 @@
 
 (include-lib "yaws/include/yaws_api.hrl")
 
+(defrecord arg2
+  req
+  pathinfo)
 
-(defun method (arg)
-  (list arg))
+(defun method (arg-data)
+  (let ((record (arg-req arg-data)))
+    (http_request-method record)))
 
 (defun handle
   (('GET arg)
-   (: io format '"Handling GET arg: ~p" (list arg)))
+   (: io format '"Handling GET arg: ~p" (list arg))
+     #(html "<html><body>Yay!</body></html>"))
   (('POST arg)
    (: io format '"Handling POST arg: ~p" (list arg)))
   (('PUT arg)
@@ -24,5 +29,6 @@
    (: io format '"Unknown method: ~p" (list method))))
 
 (defun out (arg)
-  (: io format '"~p:~p ~p Request ~n" (list (method arg)))
-  (handle (method arg) arg))
+  (let ((method-name (method arg)))
+    (: io format '"method: ~p arg: ~p~n" (list method-name arg))
+    (handle method-name arg)))
