@@ -22,8 +22,17 @@ TEST_DIR = ./test
 TEST_OUT_DIR = ./.eunit
 FINISH = -run init stop -noshell
 
-dev:
+dev: compile
 	ERL_LIBS=$(ERL_LIBS) $(YAWS) -i --conf $(YAWS_CONF)
+
+run: compile
+	ERL_LIBS=$(ERL_LIBS) $(YAWS) -D --heart --conf $(YAWS_CONF)
+
+update-conf:
+	ERL_LIBS=$(ERL_LIBS) $(YAWS) -h --conf $(YAWS_CONF)
+
+stats:
+	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -S --conf $(YAWS_CONF)
 
 get-version:
 	@echo
