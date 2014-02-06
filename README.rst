@@ -1,6 +1,6 @@
-########
+#################
 yaws-rest-starter
-########
+#################
 
 Introduction
 ============
@@ -22,7 +22,16 @@ directory of this project when you run ``make deps``:
 Installation
 ============
 
-Add content to me here!
+Just clone this puppy and jump in:
+
+.. code:: bash
+
+    $ git clone https://github.com/lfe/yaws-rest-starter.git
+    $ cd yaws-rest-starter
+    $ make dev
+    
+This will install all the dependencies and start up the YAWS server.
+
 
 Usage
 =====
