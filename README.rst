@@ -106,6 +106,8 @@ instance:
 And then have a ``src/your-project-get-handler.lfe`` file for this code that
 defines ``get``:
 
+.. code:: lisp
+
     (defun get
       "Lots of complicated logic, possibly with intricate pattern matching
       of arg parameter, with each pattern dispatching to other code in the
