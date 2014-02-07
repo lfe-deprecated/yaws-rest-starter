@@ -80,7 +80,7 @@ clean-ebin:
 clean-eunit:
 	rm -rf $(TEST_OUT_DIR)
 
-compile: get-deps clean-ebin
+compile: clean-ebin get-deps
 	rebar compile
 
 compile-only: clean-ebin
