@@ -91,7 +91,7 @@ Here's a ``GET``:
 
 .. code:: bash
 
-    $ curl -D- -X GET http://localhost:8000/
+    $ curl -D- -X GET http://localhost:8000/demo
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:57:58 GMT
@@ -104,7 +104,7 @@ And a ``POST``:
 
 .. code:: bash
 
-    $ curl -D- -X POST http://localhost:8000/
+    $ curl -D- -X POST http://localhost:8000/demo
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:58:38 GMT
@@ -117,7 +117,7 @@ One more: a Here's a ``GET``:
 
 .. code:: bash
 
-    $ curl -D- -X OPTIONS http://localhost:8000/
+    $ curl -D- -X OPTIONS http://localhost:8000/demo
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:59:44 GMT
@@ -125,6 +125,19 @@ One more: a Here's a ``GET``:
     Content-Type: application/json
 
     {"data": "Here, hazsomeOPTIONSdataz!"}
+
+Here's what happens when you hit a URL that doesn't have a defined route:
+
+.. code::
+
+    $ curl -D- -X OPTIONS http://localhost:8000/bad-path
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Fri, 07 Feb 2014 16:23:51 GMT
+    Content-Length: 29
+    Content-Type: application/json
+
+    {"error": "Unmatched route."}
 
 
 Benchmarks
@@ -156,8 +169,25 @@ And one for ``httperf``:
 Development
 ===========
 
+Routes are defined in the appropriately-named
+``./src/yaws-rest-starter-routes.lfe``:
+
+.. code:: lisp
+
+  (defun routes
+    "REST API Routes"
+    (('"/demo" method arg-data)
+      (: yaws-rest-starter-demo get-data method arg-data))
+    ((path method arg)
+      (: io format
+        '"path-info: ~p method: ~p arg-data: ~p~n"
+        (list path method arg))
+      #(content
+        "application/json"
+        "{\"error\": \"Unmatched route.\"}")))
+
 For a simple REST service, you might only need to replace the code for each
-HTTP verb in ``src/yaws-rest-starter.lfe``. For more involved work, you could
+HTTP verb in ``src/yaws-rest-starter-demo.lfe``. For more involved work, you could
 split each of those out in to separate functions, e.g.:
 
 .. code:: lisp
