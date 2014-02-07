@@ -70,11 +70,46 @@ Checking the HTTP Verbs
 -----------------------
 
 You can make calls to and example the responses from the demo REST server
-with curl:
+with curl.
+
+Here's a ``GET``:
 
 .. code:: bash
 
-    $
+    $ curl -D- -X GET http://localhost:8000/
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Fri, 07 Feb 2014 04:57:58 GMT
+    Content-Length: 34
+    Content-Type: application/json
+
+    {"data": "Here, hazsomeGETdataz!"}
+
+And a ``POST``:
+
+.. code:: bash
+
+    $ curl -D- -X POST http://localhost:8000/
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Fri, 07 Feb 2014 04:58:38 GMT
+    Content-Length: 34
+    Content-Type: application/json
+
+    {"data": "YOU madesomePOSTdataz!"}
+
+One more: a Here's a ``GET``:
+
+.. code:: bash
+
+    $ curl -D- -X OPTIONS http://localhost:8000/
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Fri, 07 Feb 2014 04:59:44 GMT
+    Content-Length: 38
+    Content-Type: application/json
+
+    {"data": "Here, hazsomeOPTIONSdataz!"}
 
 
 Benchmarks
