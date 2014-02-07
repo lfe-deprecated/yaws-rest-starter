@@ -13,6 +13,7 @@ LFEUNIT_DIR = $(DEPS)/lfeunit
 YAWS_DIR = $(DEPS)/yaws
 YAWS = $(YAWS_DIR)/bin/yaws
 YAWS_CONF = $(ETC_DIR)/yaws.conf
+YAWS_SERVER_ID = restdemo
 # Note that ERL_LIBS is for running this project in development and that
 # ERL_LIB is for installation.
 ERL_LIBS = $(LFE_DIR):$(LFE_UTILS_DIR):$(LFEUNIT_DIR):$(YAWS_DIR):./
@@ -23,19 +24,19 @@ TEST_OUT_DIR = ./.eunit
 FINISH = -run init stop -noshell
 
 dev: compile-only
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -i --conf $(YAWS_CONF)
+	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -i --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
 
 run: compile
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -D --heart --conf $(YAWS_CONF)
+	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -D --heart --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
 
 update-conf:
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -h --conf $(YAWS_CONF)
+	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -h --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
 
 stats:
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -S
+	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -S --id $(YAWS_SERVER_ID)
 
 stop:
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) --stop
+	@ERL_LIBS=$(ERL_LIBS) $(YAWS) --stop --id $(YAWS_SERVER_ID)
 
 get-version:
 	@echo
