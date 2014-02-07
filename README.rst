@@ -134,8 +134,8 @@ Benchmarks are a lie. Okay, now that we've gotten that out of the way, on
 with the lies!
 
 Running ``httperf`` and ``ab`` against the demo REST service on a 2012 MacBook
-Pro laptop with tons of other crap running on it gives reqs/s in the **14,000**
-to **18,000** range.
+Pro laptop with tons of other crap running on it gives **reqs/s** in the
+**14,000** to **18,000** range.
 
 Here's an example ``ab`` command that was used:
 
