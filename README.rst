@@ -235,6 +235,10 @@ And then have a ``src/your-project-gets.lfe`` file for this code that defines
       (( ...
        )))
 
+Additional Info
+===============
+
+* `Learn more about YAWS`_
 
 .. Links
 .. -----
@@ -243,3 +247,4 @@ And then have a ``src/your-project-gets.lfe`` file for this code that defines
 .. _Erlang: http://www.erlang.org/
 .. _rebar: https://github.com/rebar/rebar
 .. _lfeunit: https://github.com/lfe/lfeunit
+.. _Learn more about YAWS: http://www.scribd.com/doc/16212424/Building-RESTful-Web-Services-with-Erlang-and-Yaws
