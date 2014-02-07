@@ -32,7 +32,10 @@ update-conf:
 	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -h --conf $(YAWS_CONF)
 
 stats:
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -S --conf $(YAWS_CONF)
+	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -S
+
+stop:
+	@ERL_LIBS=$(ERL_LIBS) $(YAWS) --stop
 
 get-version:
 	@echo
