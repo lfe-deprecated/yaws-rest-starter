@@ -17,8 +17,17 @@ Dependencies
 This project assumes that you have `rebar`_ installed somwhere in your
 ``$PATH``.
 
-This project depends upon the following, which installed to the ``deps``
-directory of this project when you run ``make deps``:
+If you are running Ubuntu, you will need to install the following:
+
+.. code:: bash
+
+    $ sudo apt-get install erlang libpam0g-dev
+
+The latter is needed to compile YAWS.
+
+This project depends upon the following, which is automatically installed by
+rebar to the ``deps`` directory of this project when you run ``make deps``
+(also done implicitely by ``make compile``):
 
 * `LFE`_ (Lisp Flavored Erlang; needed only to compile)
 * `lfeunit`_ (needed only to run the unit tests)
@@ -37,6 +46,12 @@ Just clone this puppy and jump in:
     $ make compile
 
 This will install all the dependencies and compile everything you need.
+
+Troubleshooting
+---------------
+
+If your compile process fails, you may need to run ``make get-deps`` explicitly
+and then re-run ``make compile``.
 
 
 The Demo Server
