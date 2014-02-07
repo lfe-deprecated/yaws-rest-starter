@@ -174,17 +174,22 @@ Routes are defined in the appropriately-named
 
 .. code:: lisp
 
-  (defun routes
-    "REST API Routes"
-    (('"/demo" method arg-data)
-      (: yaws-rest-starter-demo get-data method arg-data))
-    ((path method arg)
-      (: io format
-        '"path-info: ~p method: ~p arg-data: ~p~n"
-        (list path method arg))
-      #(content
-        "application/json"
-        "{\"error\": \"Unmatched route.\"}")))
+    (defun routes
+      "REST API Routes"
+      (('"/demo" method arg-data)
+        (: yaws-rest-starter-demo get-data method arg-data))
+      ; XXX add more routes here for your application
+      ;(('"/another/path" method arg-data)
+      ; (: your-app your-func method arg-data))
+      ;
+      ; When nothing matches, do this
+      ((path method arg)
+        (: io format
+          '"Unmatched route!~n Path-info: ~p~n method: ~p~n arg-data: ~p~n~n"
+          (list path method arg))
+        #(content
+          "application/json"
+          "{\"error\": \"Unmatched route.\"}")))
 
 For a simple REST service, you might only need to replace the code for each
 HTTP verb in ``src/yaws-rest-starter-demo.lfe``. For more involved work, you could

@@ -6,9 +6,14 @@
   "REST API Routes"
   (('"/demo" method arg-data)
     (: yaws-rest-starter-demo get-data method arg-data))
+  ; XXX add more routes here for your application
+  ;(('"/another/path" method arg-data)
+  ; (: your-app your-func method arg-data))
+  ;
+  ; When nothing matches, do this
   ((path method arg)
     (: io format
-      '"path-info: ~p method: ~p arg-data: ~p~n"
+      '"Unmatched route!~n Path-info: ~p~n method: ~p~n arg-data: ~p~n~n"
       (list path method arg))
     #(content
       "application/json"
