@@ -47,6 +47,7 @@ Just clone this puppy and jump in:
 
 This will install all the dependencies and compile everything you need.
 
+
 Troubleshooting
 ---------------
 
@@ -234,6 +235,7 @@ And then have a ``src/your-project-gets.lfe`` file for this code that defines
       the module."
       (( ...
        )))
+
 
 Additional Info
 ===============
