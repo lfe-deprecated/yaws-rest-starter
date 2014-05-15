@@ -1,4 +1,4 @@
-(defmodule yaws-rest-starter-demo
+(defmodule yaws-rest-starter-demo-1
   (export all))
 
 

@@ -63,7 +63,7 @@ Starting and Stopping
 ---------------------
 
 To start the YAWS server + demo REST service in development mode, with any
-printing (e.g., ``(: io format ...)``) sent to sdout, just do this:
+printing (e.g., ``(io:format ...)``) sent to sdout, just do this:
 
 .. code:: bash
 
@@ -92,7 +92,7 @@ Here's a ``GET``:
 
 .. code:: bash
 
-    $ curl -D- -X GET http://localhost:8000/demo
+    $ curl -D- -X GET http://localhost:8000/demo-1
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:57:58 GMT
@@ -105,7 +105,7 @@ And a ``POST``:
 
 .. code:: bash
 
-    $ curl -D- -X POST http://localhost:8000/demo
+    $ curl -D- -X POST http://localhost:8000/demo-1
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:58:38 GMT
@@ -118,7 +118,7 @@ One more: a Here's a ``GET``:
 
 .. code:: bash
 
-    $ curl -D- -X OPTIONS http://localhost:8000/demo
+    $ curl -D- -X OPTIONS http://localhost:8000/demo-1
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:59:44 GMT
@@ -177,23 +177,23 @@ Routes are defined in the appropriately-named
 
     (defun routes
       "REST API Routes"
-      (('"/demo" method arg-data)
-        (: yaws-rest-starter-demo get-data method arg-data))
+      (('"/demo-1" method arg-data)
+        (yaws-rest-starter-demo-1:get-data method arg-data))
       ; XXX add more routes here for your application
       ;(('"/another/path" method arg-data)
-      ; (: your-app your-func method arg-data))
+      ; (your-app:your-func method arg-data))
       ;
       ; When nothing matches, do this
       ((path method arg)
-        (: io format
-          '"Unmatched route!~n Path-info: ~p~n method: ~p~n arg-data: ~p~n~n"
+        (io:format
+          '"Unmatched route!~nPath-info: ~p~nmethod: ~p~narg-data: ~p~n~n"
           (list path method arg))
         #(content
           "application/json"
           "{\"error\": \"Unmatched route.\"}")))
 
 For a simple REST service, you might only need to replace the code for each
-HTTP verb in ``src/yaws-rest-starter-demo.lfe``. For more involved work, you could
+HTTP verb in ``src/yaws-rest-starter-demo-1.lfe``. For more involved work, you could
 split each of those out in to separate functions, e.g.:
 
 .. code:: lisp

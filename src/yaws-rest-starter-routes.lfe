@@ -4,8 +4,8 @@
 
 (defun routes
   "REST API Routes"
-  (('"/demo" method arg-data)
-    (: yaws-rest-starter-demo get-data method arg-data))
+  (('"/demo-1" method arg-data)
+    (yaws-rest-starter-demo-1:get-data method arg-data))
   ; XXX add more routes here for your application
   ;(('"/another/path" method arg-data)
   ; (: your-app your-func method arg-data))
