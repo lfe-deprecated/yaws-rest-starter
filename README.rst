@@ -129,7 +129,7 @@ One more: a Here's a ``GET``:
 
 Here's what happens when you hit a URL that doesn't have a defined route:
 
-.. code::
+.. code:: bash
 
     $ curl -D- -X OPTIONS http://localhost:8000/demos/demo-1/bad-resource
     HTTP/1.1 200 OK
@@ -150,7 +150,7 @@ created specifically for that presentation.
 
 Order a new car:
 
-.. code::
+.. code:: bash
 
     $ curl -D- -X POST http://localhost:8000/demos/demo-2/order
     HTTP/1.1 200 OK
@@ -163,7 +163,7 @@ Order a new car:
 
 Get a list of pending orders:
 
-.. code::
+.. code:: bash
 
     $ curl -D- -X GET http://localhost:8000/demos/demo-2/orders
     HTTP/1.1 200 OK
@@ -176,7 +176,7 @@ Get a list of pending orders:
 
 Get an order's status:
 
-.. code::
+.. code:: bash
 
     $ curl -D- -X GET http://localhost:8000/demos/demo-2/order/1024
     HTTP/1.1 200 OK
@@ -189,7 +189,7 @@ Get an order's status:
 
 Update an order:
 
-.. code::
+.. code:: bash
 
     $ curl -D- -X PUT http://localhost:8000/demos/demo-2/order/512
     HTTP/1.1 200 OK
@@ -202,7 +202,7 @@ Update an order:
 
 Delete an order:
 
-.. code::
+.. code:: bash
 
     $ curl -D- -X DELETE http://localhost:8000/demos/demo-2/order/124
     HTTP/1.1 200 OK
@@ -215,7 +215,7 @@ Delete an order:
 
 Get the payment status of a car order:
 
-.. code::
+.. code:: bash
 
     $ curl -D- -X GET http://localhost:8000/demos/demo-2/payment/order/123
     HTTP/1.1 200 OK
@@ -228,7 +228,7 @@ Get the payment status of a car order:
 
 Pay for your car:
 
-.. code::
+.. code:: bash
 
     $ curl -D- -X PUT http://localhost:8000/demos/demo-2/payment/order/123
     HTTP/1.1 200 OK
