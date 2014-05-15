@@ -6,9 +6,9 @@ yaws-rest-starter
 Introduction
 ============
 
-This is a project the demonstrates what a RESTful service in `LFE`_ looks like
-when run on top of the `YAWS`_ (`Erlang`_) web server. This may be forked and
-used as the starter codebase for your own project.
+This is a project the demonstrates what a RESTful service in `LFE`_ looks
+like when run on top of the `YAWS`_ (`Erlang`_) web server. This may be
+forked and used as the starter codebase for your own project.
 
 
 Dependencies
@@ -246,9 +246,9 @@ Benchmarks
 Benchmarks are a lie. Okay, now that we've gotten that out of the way, on
 with the lies!
 
-Running ``httperf`` and ``ab`` against the demo REST service on a 2012 MacBook
-Pro laptop with tons of other crap running on it gives **reqs/s** in the
-**14,000** to **18,000** range.
+Running ``httperf`` and ``ab`` against the demo REST service on a 2012
+MacBook Pro laptop with tons of other crap running on it gives **reqs/s** in
+the **14,000** to **18,000** range.
 
 Here's an example ``ab`` command that was used:
 
