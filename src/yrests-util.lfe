@@ -3,10 +3,11 @@
 
 (include-lib "yaws/include/yaws_api.hrl")
 
-
-(defun parse-path (arg-data)
-  ""
-  (arg-pathinfo arg-data))
+(defun parse-path
+  (('undefined)
+   '())
+  ((arg-data)
+   (string:tokens arg-data "/")))
 
 (defun method (arg-data)
   "Use the LFE record macros to parse data from the records defined in
@@ -18,5 +19,5 @@
   "This function can be called by all other out functions, as it handles the
   method name parsing. YAWS cannot use this function directly."
   (let ((method-name (method arg-data))
-        (path-info (parse-path arg-data)))
+        (path-info (parse-path (arg-pathinfo arg-data))))
     (funcall router path-info method-name arg-data)))

@@ -92,7 +92,7 @@ Here's a ``GET``:
 
 .. code:: bash
 
-    $ curl -D- -X GET http://localhost:8000/demo-1
+    $ curl -D- -X GET http://localhost:8000/demos/demo-1
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:57:58 GMT
@@ -105,7 +105,7 @@ And a ``POST``:
 
 .. code:: bash
 
-    $ curl -D- -X POST http://localhost:8000/demo-1
+    $ curl -D- -X POST http://localhost:8000/demos/demo-1
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:58:38 GMT
@@ -118,7 +118,7 @@ One more: a Here's a ``GET``:
 
 .. code:: bash
 
-    $ curl -D- -X OPTIONS http://localhost:8000/demo-1
+    $ curl -D- -X OPTIONS http://localhost:8000/demos/demo-1
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:59:44 GMT
@@ -131,7 +131,7 @@ Here's what happens when you hit a URL that doesn't have a defined route:
 
 .. code::
 
-    $ curl -D- -X OPTIONS http://localhost:8000/bad-path
+    $ curl -D- -X OPTIONS http://localhost:8000/demos/demo-1/bad-resource
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 16:23:51 GMT
@@ -184,7 +184,7 @@ Routes are defined in the appropriately-named
 
     (defun routes
       "REST API Routes"
-      (('"/demo-1" method arg-data)
+      (('"/demos/demo-1" method arg-data)
         (yrests-demo-1:get-data method arg-data))
       ; XXX add more routes here for your application
       ;(('"/another/path" method arg-data)
