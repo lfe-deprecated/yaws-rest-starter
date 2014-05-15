@@ -1,4 +1,4 @@
-PROJECT = yaws-rest-starter
+PROJECT = yrests
 LIB = $(PROJECT)
 DEPS = ./deps
 BIN_DIR = ./bin

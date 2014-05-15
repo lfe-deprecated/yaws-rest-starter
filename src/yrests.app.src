@@ -1,5 +1,5 @@
 %% -*- erlang -*-
-{application, 'yaws-rest-starter',
+{application, 'yrests',
  [
   %% A quick description of the application.
   {description, "My project description..."},
@@ -10,7 +10,7 @@
   %% All modules used by the application.
   {modules,
    [
-    'yaws-rest-starter'
+    'yrests'
    ]},
 
   %% All of the registered names the application uses. This can be ignored.

@@ -1,4 +1,4 @@
-(defmodule yaws-rest-starter-util
+(defmodule yrests-util
   (export all))
 
 (include-lib "yaws/include/yaws_api.hrl")

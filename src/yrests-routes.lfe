@@ -1,11 +1,11 @@
-(defmodule yaws-rest-starter-routes
+(defmodule yrests-routes
   (export all))
 
 
 (defun routes
   "REST API Routes"
   (('"/demo-1" method arg-data)
-    (yaws-rest-starter-demo-1:get-data method arg-data))
+    (yrests-demo-1:get-data method arg-data))
   ; XXX add more routes here for your application
   ;(('"/another/path" method arg-data)
   ; (: your-app your-func method arg-data))
@@ -26,4 +26,4 @@
 
   In particular, this function is intended to handle all v1 traffic for this
   REST API."
-  (: yaws-rest-starter-util meta-out arg-data #'routes/3))
+  (: yrests-util meta-out arg-data #'routes/3))

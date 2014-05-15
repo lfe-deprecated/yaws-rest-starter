@@ -1,5 +1,5 @@
 #################
-yaws-rest-starter
+yrests
 #################
 
 
@@ -41,8 +41,8 @@ Just clone this puppy and jump in:
 
 .. code:: bash
 
-    $ git clone https://github.com/lfe/yaws-rest-starter.git
-    $ cd yaws-rest-starter
+    $ git clone https://github.com/lfe/yrests.git
+    $ cd yrests
     $ make compile
 
 This will install all the dependencies and compile everything you need.
@@ -178,14 +178,14 @@ Development
 ===========
 
 Routes are defined in the appropriately-named
-``./src/yaws-rest-starter-routes.lfe``:
+``./src/yrests-routes.lfe``:
 
 .. code:: lisp
 
     (defun routes
       "REST API Routes"
       (('"/demo-1" method arg-data)
-        (yaws-rest-starter-demo-1:get-data method arg-data))
+        (yrests-demo-1:get-data method arg-data))
       ; XXX add more routes here for your application
       ;(('"/another/path" method arg-data)
       ; (your-app:your-func method arg-data))
@@ -200,7 +200,7 @@ Routes are defined in the appropriately-named
           "{\"error\": \"Unmatched route.\"}")))
 
 For a simple REST service, you might only need to replace the code for each
-HTTP verb in ``src/yaws-rest-starter-demo-1.lfe``. For more involved work, you could
+HTTP verb in ``src/yrests-demo-1.lfe``. For more involved work, you could
 split each of those out in to separate functions, e.g.:
 
 .. code:: lisp

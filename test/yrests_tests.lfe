@@ -1,4 +1,4 @@
-(defmodule yaws-rest-starter_tests
+(defmodule yrests_tests
   (export all)
   (import
     (from lfeunit-util
