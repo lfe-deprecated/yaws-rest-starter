@@ -254,14 +254,14 @@ Here's an example ``ab`` command that was used:
 
 .. code:: bash
 
-    $ ab -k -c 100 -n 20000 http://localhost:8000/
+    $ ab -k -c 100 -n 20000 http://localhost:8000/demos/demo-1
 
 And one for ``httperf``:
 
 .. code:: bash
 
     $ httperf --hog \
-      --server localhost --port 8000 --uri / \
+      --server localhost --port 8000 --uri /demos/demo-1 \
       --timeout 5 --rate 100 \
       --num-calls 10000 --num-conns 10
 
@@ -269,23 +269,23 @@ And one for ``httperf``:
 Development
 ===========
 
-Routes are defined in the appropriately-named
-``./src/yrests-routes.lfe``:
+Routes are defined in the appropriately-named ``routes`` function in the
+service definition files:
 
 .. code:: lisp
 
     (defun routes
       "REST API Routes"
-      (('"/demos/demo-1" method arg-data)
-        (yrests-demo-1:get-data method arg-data))
+      (('() method arg-data)
+        (get-data method arg-data))
       ; XXX add more routes here for your application
-      ;(('"/another/path" method arg-data)
+      ;(((list "another" "path") method arg-data)
       ; (your-app:your-func method arg-data))
       ;
       ; When nothing matches, do this
       ((path method arg)
         (io:format
-          '"Unmatched route!~nPath-info: ~p~nmethod: ~p~narg-data: ~p~n~n"
+          "Unmatched route!~nPath-info: ~p~nmethod: ~p~narg-data: ~p~n~n"
           (list path method arg))
         #(content
           "application/json"
