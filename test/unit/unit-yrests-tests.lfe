@@ -1,4 +1,4 @@
-(defmodule yrests_tests
+(defmodule unit-yrests-tests
   (export all)
   (import
     (from lfeunit-util
