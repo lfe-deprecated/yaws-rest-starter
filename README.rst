@@ -148,6 +148,98 @@ This demo was originally made for the LFE presentation given at Erlang
 Factory San Francisco, 2014. It was taken from the `cloudy`_ repository
 created specifically for that presentation.
 
+Order a new car:
+
+.. code::
+
+    $ curl -D- -X POST http://localhost:8000/demos/demo-2/order
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Thu, 15 May 2014 06:39:41 GMT
+    Content-Length: 33
+    Content-Type: application/json
+
+    {"data": "You made a new order."}
+
+Get a list of pending orders:
+
+.. code::
+
+    $ curl -D- -X GET http://localhost:8000/demos/demo-2/orders
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Thu, 15 May 2014 06:53:30 GMT
+    Content-Length: 37
+    Content-Type: application/json
+
+    {"data": "You got a list of orders."}
+
+Get an order's status:
+
+.. code::
+
+    $ curl -D- -X GET http://localhost:8000/demos/demo-2/order/1024
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Thu, 15 May 2014 06:57:58 GMT
+    Content-Length: 46
+    Content-Type: application/json
+
+    {"data": "You got the status for order 1024."}
+
+Update an order:
+
+.. code::
+
+    $ curl -D- -X PUT http://localhost:8000/demos/demo-2/order/512
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Thu, 15 May 2014 06:56:41 GMT
+    Content-Length: 34
+    Content-Type: application/json
+
+    {"data": "You updated order 512."}
+
+Delete an order:
+
+.. code::
+
+    $ curl -D- -X DELETE http://localhost:8000/demos/demo-2/order/124
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Thu, 15 May 2014 07:00:54 GMT
+    Content-Length: 37
+    Content-Type: application/json
+
+    {"data": "You deleted order 124."}
+
+Get the payment status of a car order:
+
+.. code::
+
+    $ curl -D- -X GET http://localhost:8000/demos/demo-2/payment/order/123
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Thu, 15 May 2014 06:59:11 GMT
+    Content-Length: 51
+    Content-Type: application/json
+
+    {"data": "You got the payment status of an order."}
+
+Pay for your car:
+
+.. code::
+
+    $ curl -D- -X PUT http://localhost:8000/demos/demo-2/payment/order/123
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Thu, 15 May 2014 06:55:19 GMT
+    Content-Length: 34
+    Content-Type: application/json
+
+    {"data": "You paid for an order."}
+
+
 Benchmarks
 ==========
 
