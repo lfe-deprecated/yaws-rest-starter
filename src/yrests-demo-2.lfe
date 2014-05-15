@@ -1,6 +1,8 @@
 (defmodule yrests-demo-2
   (export all))
 
+(include-lib "deps/lfest/include/macros.lfe")
+
 ;; REST API functions
 (defun routes
   "Routes for the Volvoshop REST API."
