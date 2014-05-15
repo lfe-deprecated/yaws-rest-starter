@@ -51,18 +51,14 @@ This will install all the dependencies and compile everything you need.
 Troubleshooting
 ---------------
 
-If your compile process fails, you may need to run ``make get-deps`` explicitly
-and then re-run ``make compile``.
-
-
-The Demo Server
-===============
+If your compile process fails, you may need to run ``make get-deps``
+explicitly and then re-run ``make compile``.
 
 
 Starting and Stopping
 ---------------------
 
-To start the YAWS server + demo REST service in development mode, with any
+To start the YAWS server + demo REST services in development mode, with any
 printing (e.g., ``(io:format ...)``) sent to sdout, just do this:
 
 .. code:: bash
@@ -82,8 +78,12 @@ To stop the server once in daemon mode, do:
     $ make stop
 
 
-Checking the HTTP Verbs
------------------------
+Demo REST Services
+==================
+
+
+Demo #1: Simple HTTP Verbs
+--------------------------
 
 You can make calls to and example the responses from the demo REST server
 with curl.
@@ -140,6 +140,13 @@ Here's what happens when you hit a URL that doesn't have a defined route:
 
     {"error": "Unmatched route."}
 
+
+Demo #2: Volvo Shop
+-------------------
+
+This demo was originally made for the LFE presentation given at Erlang
+Factory San Francisco, 2014. It was taken from the `cloudy`_ repository
+created specifically for that presentation.
 
 Benchmarks
 ==========
@@ -242,6 +249,7 @@ Additional Info
 
 * `Learn more about YAWS`_
 
+
 .. Links
 .. -----
 .. _LFE: https://github.com/rvirding/lfe
@@ -250,3 +258,4 @@ Additional Info
 .. _rebar: https://github.com/rebar/rebar
 .. _lfeunit: https://github.com/lfe/lfeunit
 .. _Learn more about YAWS: http://www.scribd.com/doc/16212424/Building-RESTful-Web-Services-with-Erlang-and-Yaws
+.. _cloudy: https://github.com/oubiwann/cloudy
