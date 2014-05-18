@@ -8,3 +8,5 @@ otp_release:
   - 17.0
   - R16B03
   - R15B03
+before_install:
+  - sudo apt-get install libpam0g-dev
