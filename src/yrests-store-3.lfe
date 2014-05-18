@@ -10,24 +10,22 @@
   ;; single order operations
   ('POST "/order"
          (create-order (lfest:get-data arg-data)))
-  ;; XXX next up in hacking tasks: change 124 in the url to :id and then
-  ;; do some crazy parsing in the macros
-  ('GET "/order/124"
-        (get-order 124))
-  ('PUT "/order/124"
-        (update-order 124 (lfest:get-data arg-data)))
-  ('DELETE "/order/124"
-           (delete-order 124))
+  ('GET "/order/:id"
+        (get-order id))
+  ('PUT "/order/:id"
+        (update-order id (lfest:get-data arg-data)))
+  ('DELETE "/order/:id"
+           (delete-order id))
   ;; order collection operations
   ('GET "/orders"
         (get-orders))
   ;; payment operations
-  ('GET "/payment/order/124"
-        (get-payment-status 124))
-  ('PUT "/payment/order/124"
-        (make-payment 124 (lfest:get-data arg-data)))
+  ('GET "/payment/order/:id"
+        (get-payment-status id))
+  ('PUT "/payment/order/:id"
+        (make-payment id (lfest:get-data arg-data)))
   ;; error conditions
-  ('FORBIDDEN
+  ('ALLOWONLY
     ('GET 'POST 'PUT 'DELETE)
     (lfest-json-resp:method-not-allowed))
   ('NOTFOUND
@@ -41,17 +39,17 @@
 (defun get-order (order-id)
   (io:format "Got GET for order ~p~n" (list order-id))
   (lfest-json-resp:ok
-    (++ "You got the status for order " (integer_to_list order-id) ".")))
+    (++ "You got the status for order " order-id ".")))
 
 (defun update-order (order-id data)
   (io:format "Got PUT for order ~p with payload: ~p~n" (list order-id data))
   (lfest-json-resp:updated
-    (++ "You updated order " (integer_to_list order-id) ".")))
+    (++ "You updated order " order-id ".")))
 
 (defun delete-order (order-id)
   (io:format "Got DELETE for order ~p~n" (list order-id))
   (lfest-json-resp:deleted
-     (++ "You deleted order " (integer_to_list order-id) ".")))
+     (++ "You deleted order " order-id ".")))
 
 ;;; Operations on the collection of orders
 (defun get-orders ()
