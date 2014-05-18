@@ -1,4 +1,4 @@
-(defmodule yrests-demo-1
+(defmodule yrests-just-verbs
   (export all))
 
 (defun get-data
