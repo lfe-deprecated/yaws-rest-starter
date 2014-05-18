@@ -86,13 +86,13 @@ Demo #1: Simple HTTP Verbs
 --------------------------
 
 You can make calls to and example the responses from the demo REST server
-with curl.
+with curl. Not that in this simple demo, all status codes are 200.
 
 Here's a ``GET``:
 
 .. code:: bash
 
-    $ curl -D- -X GET http://localhost:8000/demos/demo-1
+    $ curl -D- -X GET http://localhost:8000/demos/verbs
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:57:58 GMT
@@ -105,7 +105,7 @@ And a ``POST``:
 
 .. code:: bash
 
-    $ curl -D- -X POST http://localhost:8000/demos/demo-1
+    $ curl -D- -X POST http://localhost:8000/demos/verbs
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:58:38 GMT
@@ -118,7 +118,7 @@ One more: a Here's a ``GET``:
 
 .. code:: bash
 
-    $ curl -D- -X OPTIONS http://localhost:8000/demos/demo-1
+    $ curl -D- -X OPTIONS http://localhost:8000/demos/verbs
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 04:59:44 GMT
@@ -131,7 +131,7 @@ Here's what happens when you hit a URL that doesn't have a defined route:
 
 .. code:: bash
 
-    $ curl -D- -X OPTIONS http://localhost:8000/demos/demo-1/bad-resource
+    $ curl -D- -X OPTIONS http://localhost:8000/demos/verbs/bad-resource
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Fri, 07 Feb 2014 16:23:51 GMT
@@ -148,96 +148,144 @@ This demo was originally made for the LFE presentation given at Erlang
 Factory San Francisco, 2014. It was taken from the `cloudy`_ repository
 created specifically for that presentation.
 
+In this demo, the correct HTTP status codes are returned.
+
+
 Order a new car:
 
 .. code:: bash
 
-    $ curl -D- -X POST http://localhost:8000/demos/demo-2/order
-    HTTP/1.1 200 OK
+    $ curl -D- -X POST http://localhost:8000/demos/store/order \
+        -d '{"Make": "Volvo", "Model": "P1800"}'
+    HTTP/1.1 201 Created
     Server: Yaws 1.98
     Date: Thu, 15 May 2014 06:39:41 GMT
     Content-Length: 33
     Content-Type: application/json
 
-    {"data": "You made a new order."}
+    {"result": "You made a new order."}
 
 Get a list of pending orders:
 
 .. code:: bash
 
-    $ curl -D- -X GET http://localhost:8000/demos/demo-2/orders
+    $ curl -D- -X GET http://localhost:8000/demos/store/orders
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Thu, 15 May 2014 06:53:30 GMT
     Content-Length: 37
     Content-Type: application/json
 
-    {"data": "You got a list of orders."}
+    {"result": "You got a list of orders."}
 
 Get an order's status:
 
 .. code:: bash
 
-    $ curl -D- -X GET http://localhost:8000/demos/demo-2/order/1024
+    $ curl -D- -X GET http://localhost:8000/demos/store/order/124
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Thu, 15 May 2014 06:57:58 GMT
     Content-Length: 46
     Content-Type: application/json
 
-    {"data": "You got the status for order 1024."}
+    {"result": "You got the status for order 124."}
 
 Update an order:
 
 .. code:: bash
 
-    $ curl -D- -X PUT http://localhost:8000/demos/demo-2/order/512
+    $ curl -D- -X PUT http://localhost:8000/demos/store/order/124 \
+        -d '{"Model": "2014 P1800"}'
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Thu, 15 May 2014 06:56:41 GMT
     Content-Length: 34
     Content-Type: application/json
 
-    {"data": "You updated order 512."}
+    {"result": "You updated order 124."}
 
 Delete an order:
 
 .. code:: bash
 
-    $ curl -D- -X DELETE http://localhost:8000/demos/demo-2/order/124
+    $ curl -D- -X DELETE http://localhost:8000/demos/store/order/124
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Thu, 15 May 2014 07:00:54 GMT
     Content-Length: 37
     Content-Type: application/json
 
-    {"data": "You deleted order 124."}
+    {"result": "You deleted order 124."}
 
 Get the payment status of a car order:
 
 .. code:: bash
 
-    $ curl -D- -X GET http://localhost:8000/demos/demo-2/payment/order/123
+    $ curl -D- -X GET http://localhost:8000/demos/store/payment/order/124
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Thu, 15 May 2014 06:59:11 GMT
     Content-Length: 51
     Content-Type: application/json
 
-    {"data": "You got the payment status of an order."}
+    {"result": "You got the payment status of an order."}
 
 Pay for your car:
 
 .. code:: bash
 
-    $ curl -D- -X PUT http://localhost:8000/demos/demo-2/payment/order/123
+    $ curl -D- -X PUT http://localhost:8000/demos/store/payment/order/124 \
+        -d '{"Payment": "1000000kr"}'
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Thu, 15 May 2014 06:55:19 GMT
     Content-Length: 34
     Content-Type: application/json
 
-    {"data": "You paid for an order."}
+    {"result": "You paid for an order."}
+
+Hit a bad URL:
+
+.. code:: bash
+
+    $ curl -D- -X GET http://localhost:8000/demos/store/jalopies
+    HTTP/1.1 404 Not Found
+    Server: Yaws 1.98
+    Date: Sun, 18 May 2014 01:00:48 GMT
+    Content-Length: 41
+    Content-Type: application/json
+
+    {"result": {"error": "Unmatched route."}}
+
+
+Demo #3: Volvo Shop
+-------------------
+
+This demo offers the same functionality as Demo #2, but differs in the
+implementation: it uses the routing and dispatch functions/macros from the
+lfest project.
+
+This demo offers a front page. View the base URL:
+
+.. code:: bash
+
+    $ curl -D- -X GET http://localhost:8000/demos/store/
+    HTTP/1.1 200 OK
+    Server: Yaws 1.98
+    Date: Sun, 18 May 2014 00:32:42 GMT
+    Content-Length: 27
+    Content-Type: text/html
+
+    Welcome to the Volvo Store!
+
+You can test it exactly as Demo #2, but remember to change the the URL to
+point to the right demo:
+
+.. code:: bash
+
+  $ curl -X POST http://localhost:8000/demos/demo-3/order \
+      -d '{"Make": "Volvo", "Model": "P1800"}'
 
 
 Benchmarks
@@ -254,14 +302,14 @@ Here's an example ``ab`` command that was used:
 
 .. code:: bash
 
-    $ ab -k -c 100 -n 20000 http://localhost:8000/demos/demo-1
+    $ ab -k -c 100 -n 20000 http://localhost:8000/demos/verbs
 
 And one for ``httperf``:
 
 .. code:: bash
 
     $ httperf --hog \
-      --server localhost --port 8000 --uri /demos/demo-1 \
+      --server localhost --port 8000 --uri /demos/verbs \
       --timeout 5 --rate 100 \
       --num-calls 10000 --num-conns 10
 
@@ -292,48 +340,8 @@ service definition files:
           "{\"error\": \"Unmatched route.\"}")))
 
 For a simple REST service, you might only need to replace the code for each
-HTTP verb in ``src/yrests-demo-1.lfe``. For more involved work, you could
-split each of those out in to separate functions, e.g.:
-
-.. code:: lisp
-
-    (defun handle
-      (('GET arg)
-       (handle-get arg))
-      (('POST arg)
-       (handle-post arg))
-       ...
-       )
-
-    (defun handle-get
-      "Lots of complicated logic, possibly with intricate pattern matching
-      of the arg parameter."
-      (( ...
-       )))
-
-One could take this a step further for even more complicated projects with
-larger codebases, and move the dispatched functions into their own modules.
-For instance, in ``./src/your-project.lfe``:
-
-.. code:: lisp
-
-    (defun handle
-      (('GET arg)
-       (: your-project-gets handle arg))
-       ...
-       )
-
-And then have a ``src/your-project-gets.lfe`` file for this code that defines
-``handle``:
-
-.. code:: lisp
-
-    (defun handle
-      "Lots of complicated logic, possibly with intricate pattern matching
-      of the arg parameter, with each pattern dispatching to other code in
-      the module."
-      (( ...
-       )))
+HTTP verb in ``src/yrests-just-verbs.lfe``. For more involved work, you
+should take a look at the "store" demo.
 
 
 Additional Info
@@ -344,6 +352,7 @@ Additional Info
 
 .. Links
 .. -----
+
 .. _LFE: https://github.com/rvirding/lfe
 .. _YAWS: https://github.com/klacke/yaws
 .. _Erlang: http://www.erlang.org/
