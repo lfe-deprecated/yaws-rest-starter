@@ -259,18 +259,24 @@ Hit a bad URL:
     {"result": {"error": "Unmatched route."}}
 
 
-Demo #3: Volvo Shop
--------------------
+Demo #3: Volvo Shop, Reloaded
+-----------------------------
 
 This demo offers the same functionality as Demo #2, but differs in the
-implementation: it uses the routing and dispatch functions/macros from the
-lfest project.
+implementation:
+
+1. The organization of routes and route functions is more like what one
+   sees in other web frameworks.
+1. It returns proper HTTP status codes.
+1. The results are more structured JSON data.
+1. It uses some of the functionality offered by the lfest project.
+1. It can handle a front page.
 
 This demo offers a front page. View the base URL:
 
 .. code:: bash
 
-    $ curl -D- -X GET http://localhost:8000/demos/store/
+    $ curl -D- -X GET http://localhost:8000/demos/store2/
     HTTP/1.1 200 OK
     Server: Yaws 1.98
     Date: Sun, 18 May 2014 00:32:42 GMT
@@ -284,7 +290,23 @@ point to the right demo:
 
 .. code:: bash
 
-  $ curl -X POST http://localhost:8000/demos/demo-3/order \
+  $ curl -X POST http://localhost:8000/demos/store2/order \
+      -d '{"Make": "Volvo", "Model": "P1800"}'
+
+
+Demo #4: Volvo Shop, Revolutions
+--------------------------------
+
+This demo offers the same functionality as Demo #3, but differs in the
+implementation: it uses the routing and dispatch functions/macros from the
+lfest project.
+
+You can test it exactly as Demo #3, but remember to change the the URL to
+point to the right demo:
+
+.. code:: bash
+
+  $ curl -X POST http://localhost:8000/demos/store3/order \
       -d '{"Make": "Volvo", "Model": "P1800"}'
 
 
