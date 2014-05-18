@@ -1,8 +1,6 @@
 (defmodule yrests-demo-2
   (export all))
 
-(include-lib "deps/lfest/include/macros.lfe")
-
 ;; REST API functions
 (defun routes
   "Routes for the Volvoshop REST API."
@@ -23,61 +21,61 @@
     (io:format
       "Unmatched route!~nPath-info: ~p~nmethod: ~p~narg-data: ~p~n~n"
       (list path method arg))
-    (yrests-util:make-json-error-response "Unmatched route.")))
+    (lfest-json-resp:not-found "Unmatched route.")))
 
 (defun order-api
   "The order API for methods without an order id."
   (('POST arg-data)
-   (yrests-util:make-json-data-response "You made a new order."))
+   (lfest-json-resp:created "You made a new order."))
   ;; When nothing matches, do this
   ((verb arg-data)
     (io:format
       "Unsupported method!~nVerb: ~p~narg-data: ~p~n~n"
       (list verb arg-data))
-    (yrests-util:make-json-error-response "Unsupported method.")))
+    (lfest-json-resp:method-not-allowed "Unsupported method.")))
 
 (defun order-api
   "The order API for methods with an order id."
   (('GET order-id arg-data)
-   (yrests-util:make-json-data-response
+   (lfest-json-resp:ok
      (++ "You got the status for order " order-id '".")))
   (('PUT order-id arg-data)
-   (yrests-util:make-json-data-response
+   (lfest-json-resp:updated
      (++ "You updated order " order-id ".")))
   (('DELETE order-id arg-data)
-   (yrests-util:make-json-data-response
+   (lfest-json-resp:deleted
      (++ "You deleted order " order-id ".")))
   ;; When nothing matches, do this
   ((verb order-id arg-data)
     (io:format
       "Unsupported method!~nVerb: ~p~norder-id: ~p~narg-data: ~p~n~n"
       (list verb order-id arg-data))
-    (yrests-util:make-json-error-response "Unsupported method.")))
+    (lfest-json-resp:method-not-allowed "Unsupported method.")))
 
 (defun orders-api
   "The orders API."
   (('GET arg-data)
-   (yrests-util:make-json-data-response "You got a list of orders."))
+   (lfest-json-resp:ok "You got a list of orders."))
   ;; When nothing matches, do this
   ((verb arg-data)
     (io:format
       "Unsupported method!~nVerb: ~p~n~narg-data: ~p~n~n"
       (list verb arg-data))
-    (yrests-util:make-json-error-response "Unsupported method.")))
+    (lfest-json-resp:method-not-allowed "Unsupported method.")))
 
 (defun payment-api
   "The payment API."
   (('GET order-id arg-data)
-   (yrests-util:make-json-data-response
+   (lfest-json-resp:ok
      "You got the payment status of an order."))
   (('PUT order-id arg-data)
-   (yrests-util:make-json-data-response "You paid for an order."))
+   (lfest-json-resp:updated "You paid for an order."))
   ;; When nothing matches, do this
   ((verb order-id arg-data)
     (io:format
       "Unsupported method!~nVerb: ~p~norder-id: ~p~narg-data: ~p~n~n"
       (list verb order-id arg-data))
-    (yrests-util:make-json-error-response "Unsupported method.")))
+    (lfest-json-resp:method-not-allowed "Unsupported method.")))
 
 (defun out (arg-data)
   "This is called by YAWS when the requested URL matches the URL specified in
