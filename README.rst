@@ -298,8 +298,8 @@ Demo #4: Volvo Shop, Revolutions
 --------------------------------
 
 This demo offers the same functionality as Demo #3, but differs in the
-implementation: it uses the routing and dispatch functions/macros from the
-lfest project.
+implementation: it uses the routing macro from the lfest project,
+considerably reducing code boiler plate.
 
 You can test it exactly as Demo #3, but remember to change the the URL to
 point to the right demo:
