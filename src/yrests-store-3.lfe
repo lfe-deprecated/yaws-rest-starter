@@ -6,24 +6,24 @@
 (defroutes
   ;; top-level
   ('GET "/"
-        (lfest-html-resp:ok "Welcome to the Volvo Store!"))
+    (lfest-html-resp:ok "Welcome to the Volvo Store!"))
   ;; single order operations
   ('POST "/order"
-         (create-order (lfest:get-data arg-data)))
+    (create-order (lfest:get-data arg-data)))
   ('GET "/order/:id"
-        (get-order id))
+    (get-order id))
   ('PUT "/order/:id"
-        (update-order id (lfest:get-data arg-data)))
+    (update-order id (lfest:get-data arg-data)))
   ('DELETE "/order/:id"
-           (delete-order id))
+    (delete-order id))
   ;; order collection operations
   ('GET "/orders"
-        (get-orders))
+    (get-orders))
   ;; payment operations
   ('GET "/payment/order/:id"
-        (get-payment-status id))
+    (get-payment-status id))
   ('PUT "/payment/order/:id"
-        (make-payment id (lfest:get-data arg-data)))
+    (make-payment id (lfest:get-data arg-data)))
   ;; error conditions
   ('ALLOWONLY
     ('GET 'POST 'PUT 'DELETE)
