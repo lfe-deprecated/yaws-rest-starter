@@ -1,0 +1,10 @@
+language: erlang
+script: "make check-travis"
+notifications:
+  irc: "irc.freenode.org#cogitat"
+  recipients:
+    - duncan@cogitat.io
+otp_release:
+  - 17.0
+  - R16B03
+  - R15B03
