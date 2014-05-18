@@ -66,9 +66,9 @@
   ;
   ; When nothing matches, do this
   ((path method arg)
-    (io:format
-      "Unmatched route!~nPath-info: ~p~nmethod: ~p~narg-data: ~p~n~n"
-      (list path method arg))
+    ; (io:format
+    ;   "Unmatched route!~nPath-info: ~p~nmethod: ~p~narg-data: ~p~n~n"
+    ;   (list path method arg))
     #(content
       "application/json"
       "{\"error\": \"Unmatched route.\"}")))
