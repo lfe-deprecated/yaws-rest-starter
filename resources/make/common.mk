@@ -55,14 +55,12 @@ compile-tests:
 shell: compile
 	@which clear >/dev/null 2>&1 && clear || printf "\033c"
 	@echo "Starting shell ..."
-	@PATH=$(SCRIPT_PATH) lfetool repl lfe -s 'prqu-settings' -s inets -s ssl \
-	-s lhttpc
+	@PATH=$(SCRIPT_PATH) lfetool repl lfe -s inets -s ssl
 
 shell-no-deps: compile-no-deps
 	@which clear >/dev/null 2>&1 && clear || printf "\033c"
 	@echo "Starting shell ..."
-	@PATH=$(SCRIPT_PATH) lfetool repl lfe -s 'prqu-settings' -s inets -s ssl \
-	-s lhttpc
+	@PATH=$(SCRIPT_PATH) lfetool repl lfe -s inets -s ssl
 
 clean: clean-ebin clean-eunit
 	@which rebar.cmd >/dev/null 2>&1 && rebar.cmd clean || rebar clean
