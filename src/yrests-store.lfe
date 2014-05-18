@@ -1,4 +1,4 @@
-(defmodule yrests-demo-2
+(defmodule yrests-store
   (export all))
 
 ;; REST API functions
