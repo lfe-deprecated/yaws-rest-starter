@@ -2,10 +2,10 @@
 {application, 'yrests',
  [
   %% A quick description of the application.
-  {description, "My project description..."},
+  {description, "A Starter Project for RESTful Services in YAWS using LFE"},
 
   %% The version of the application
-  {vsn, "0.0.1"},
+  {vsn, "0.1.0"},
 
   %% All modules used by the application.
   {modules,
