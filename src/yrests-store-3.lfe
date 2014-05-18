@@ -74,5 +74,5 @@
   In particular, this function is intended to handle all v1 traffic for this
   REST API."
   (let ((method-name (lfest:get-http-method arg-data))
-        (path-info (lfest:get-path-info arg-data)))
+        (path-info (lfest:parse-path arg-data)))
     (routes method-name path-info arg-data)))
