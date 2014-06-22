@@ -6,4 +6,4 @@ Expm.Package.new(
              "REST", "API", "HTTP", "Web"],
   maintainers: [[name: "Duncan McGreggor",
                  email: "oubiwann@cogitat.io"]],
-  repositories: [[github: "lfe/yrests"]])
+  repositories: [[github: "lfex/yrests"]])
