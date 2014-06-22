@@ -41,7 +41,7 @@ Just clone this puppy and jump in:
 
 .. code:: bash
 
-    $ git clone https://github.com/lfe/yrests.git
+    $ git clone https://github.com/lfex/yaws-rest-starter.git yrests
     $ cd yrests
     $ make compile
 
