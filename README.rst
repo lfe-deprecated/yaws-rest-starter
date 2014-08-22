@@ -30,7 +30,7 @@ rebar to the ``deps`` directory of this project when you run ``make deps``
 (also done implicitely by ``make compile``):
 
 * `LFE`_ (Lisp Flavored Erlang; needed only to compile)
-* `lfeunit`_ (needed only to run the unit tests)
+* `ltest`_ (needed only to run the unit tests)
 * `YAWS`_ (The granddaddy of Erlang web servers)
 
 
@@ -379,6 +379,6 @@ Additional Info
 .. _YAWS: https://github.com/klacke/yaws
 .. _Erlang: http://www.erlang.org/
 .. _rebar: https://github.com/rebar/rebar
-.. _lfeunit: https://github.com/lfe/lfeunit
+.. _ltest: https://github.com/lfex/ltest
 .. _Learn more about YAWS: http://www.scribd.com/doc/16212424/Building-RESTful-Web-Services-with-Erlang-and-Yaws
 .. _cloudy: https://github.com/oubiwann/cloudy
