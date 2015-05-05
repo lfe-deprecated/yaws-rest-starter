@@ -1,7 +1,7 @@
 (defmodule yrests-store-2
   (export all))
 
-(include-lib "deps/lfest/include/macros.lfe")
+(include-lib "deps/lfest/include/lfest-macros.lfe")
 
 (defun routes
   ;; top-level
