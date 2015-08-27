@@ -265,16 +265,16 @@ Demo #3: Volvo Shop, Reloaded
 This demo offers the same functionality as Demo #2, but differs in the
 implementation:
 
-1. The organization of routes and route functions is more like what one
+#. The organization of routes and route functions is more like what one
    sees in other web frameworks.
 
-1. It returns proper HTTP status codes.
+#. It returns proper HTTP status codes.
 
-1. The results are more structured JSON data.
+#. The results are more structured JSON data.
 
-1. It uses some of the functionality offered by the lfest project.
+#. It uses some of the functionality offered by the lfest project.
 
-1. It can handle a front page.
+#. It can handle a front page.
 
 This demo offers a front page. View the base URL:
 
