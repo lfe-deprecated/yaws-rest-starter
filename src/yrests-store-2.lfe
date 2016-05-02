@@ -26,33 +26,36 @@
    (make-payment 124 (lfest:get-data arg-data)))
   ;; error conditions
   ((method _ _) (when (not-in method ('GET 'POST 'PUT 'DELETE)))
-   (io:format
+   (logjam:error (MODULE) 'routes
      "Method not allowed.~nVerb: ~p~n"
      (list method))
      (lfest-json-resp:method-not-allowed))
   ((method path arg-data)
-   (io:format
+   (logjam:error (MODULE) 'routes
      "Unmatched data.~nVerb: ~p~nPath: ~p~nArg data: ~p~n~n"
      (list method path arg-data))
    (lfest-json-resp:not-found "Bad path: invalid operation.")))
 
 ;;; Operations on single orders
 (defun create-order (data)
-  (io:format "Got POST with payload: ~p~n" (list data))
+  (logjam:debug (MODULE) 'create-order/1
+    "Got POST with payload: ~p~n" `(,data))
   (lfest-json-resp:created '"{\"order-id\": 124}"))
 
 (defun get-order (order-id)
-  (io:format "Got GET for order ~p~n" (list order-id))
+  (logjam:debug (MODULE) 'get-order/1 "Got GET for order ~p~n" `(,order-id))
   (lfest-json-resp:ok
     (++ "You got the status for order " (integer_to_list order-id) ".")))
 
 (defun update-order (order-id data)
-  (io:format "Got PUT for order ~p with payload: ~p~n" (list order-id data))
+  (logjam:debug (MODULE) 'update-order/2
+    "Got PUT for order ~p with payload: ~p~n" `(,order-id ,data))
   (lfest-json-resp:updated
     (++ "You updated order " (integer_to_list order-id) ".")))
 
 (defun delete-order (order-id)
-  (io:format "Got DELETE for order ~p~n" (list order-id))
+  (logjam:debug (MODULE) 'delete-order/1
+    "Got DELETE for order ~p~n" `(,order-id))
   (lfest-json-resp:deleted
      (++ "You deleted order " (integer_to_list order-id) ".")))
 
@@ -66,7 +69,7 @@
     "You got the payment status of an order."))
 
 (defun make-payment (order-id data)
-  (io:format "Got PUT with payload: ~p~n" (list data))
+  (logjam:debug (MODULE) 'make-payment/2 "Got PUT with payload: ~p~n" `(,data))
   (lfest-json-resp:created "You paid for an order."))
 
 (defun out (arg-data)

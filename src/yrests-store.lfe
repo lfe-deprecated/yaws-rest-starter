@@ -18,7 +18,7 @@
    (payment-api method order-id arg-data))
   ;; When nothing matches, do this
   ((path method arg)
-    (io:format
+    (logjam:error (MODULE) 'routes
       "Unmatched route!~nPath-info: ~p~nmethod: ~p~narg-data: ~p~n~n"
       (list path method arg))
     (lfest-json-resp:not-found "Unmatched route.")))
@@ -29,7 +29,7 @@
    (lfest-json-resp:created "You made a new order."))
   ;; When nothing matches, do this
   ((verb arg-data)
-    (io:format
+    (logjam:error (MODULE) 'order-api/2
       "Unsupported method!~nVerb: ~p~narg-data: ~p~n~n"
       (list verb arg-data))
     (lfest-json-resp:method-not-allowed "Unsupported method.")))
@@ -47,7 +47,7 @@
      (++ "You deleted order " order-id ".")))
   ;; When nothing matches, do this
   ((verb order-id arg-data)
-    (io:format
+    (logjam:error (MODULE) 'order-api/3
       "Unsupported method!~nVerb: ~p~norder-id: ~p~narg-data: ~p~n~n"
       (list verb order-id arg-data))
     (lfest-json-resp:method-not-allowed "Unsupported method.")))
@@ -58,7 +58,7 @@
    (lfest-json-resp:ok "You got a list of orders."))
   ;; When nothing matches, do this
   ((verb arg-data)
-    (io:format
+    (logjam:error (MODULE) 'orders-api/2
       "Unsupported method!~nVerb: ~p~n~narg-data: ~p~n~n"
       (list verb arg-data))
     (lfest-json-resp:method-not-allowed "Unsupported method.")))
@@ -72,7 +72,7 @@
    (lfest-json-resp:updated "You paid for an order."))
   ;; When nothing matches, do this
   ((verb order-id arg-data)
-    (io:format
+    (logjam:error (MODULE) 'payment-api/3
       "Unsupported method!~nVerb: ~p~norder-id: ~p~narg-data: ~p~n~n"
       (list verb order-id arg-data))
     (lfest-json-resp:method-not-allowed "Unsupported method.")))

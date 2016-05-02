@@ -66,7 +66,7 @@
   ;
   ; When nothing matches, do this
   ((path method arg)
-    ; (io:format
+    ; (logjam:error
     ;   "Unmatched route!~nPath-info: ~p~nmethod: ~p~narg-data: ~p~n~n"
     ;   (list path method arg))
     #(content

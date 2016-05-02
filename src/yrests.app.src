@@ -1,5 +1,5 @@
 %% -*- erlang -*-
-{application, 'yrests',
+{application, yrests,
  [
   %% A quick description of the application.
   {description, "A Starter Project for RESTful Services in YAWS using LFE"},
@@ -10,7 +10,7 @@
   %% All modules used by the application.
   {modules,
    [
-    'yrests'
+    yrests
    ]},
 
   %% All of the registered names the application uses. This can be ignored.
