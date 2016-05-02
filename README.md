@@ -1,5 +1,4 @@
-# yaws-rest-starter [![Build Status][travis-badge]][travis]
-
+# yaws-rest-starter [![Build Status][travis-badge]][travis] [![img][tag-badge]][tag] [![img][erl-badge]][erl]
 
 #### Contents
 
@@ -365,8 +364,12 @@ Copyright © 2014-2016 Duncan McGreggor
 Distributed under the Apache License, Version 2.0.
 ```
 
-
 <!-- Named page links below: /-->
 
-[travis]: https://travis-ci.org/lfex/yaws-rest-starter
 [travis-badge]: https://travis-ci.org/lfex/yaws-rest-starter.png?branch=master
+[travis]: https://travis-ci.org/lfex/yaws-rest-starter
+[tag-badge]: https://img.shields.io/github/tag/lfex/yaws-rest-starter.svg
+[tag]: https://github.com/lfex/yaws-rest-starter/releases/latest
+[erl-badge]: https://img.shields.io/badge/erlang-%E2%89%A5R15B03-red.svg
+[erl]: http://www.erlang.org/downloads)
+
