@@ -22,6 +22,10 @@ This is a project the demonstrates what a RESTful service in LFE looks
 like when run on top of the YAWS web server. This may be
 forked and used as the starter codebase for your own project.
 
+Note that Demo #4 is the currently recommended way to develop REST services in LFE on YAWS.
+
+In the future, lmug will support Compojure-like route composiition, and that will supplant existing tools. It will also be web-server agnostic, supporting OTP inets, YAWS, elli, Cowboy, and others.
+
 
 ## Dependencies [&#x219F;](#contents)
 
