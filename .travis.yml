@@ -1,5 +1,6 @@
 language: erlang
-sudo: false
+sudo: required
+before_install: sudo apt-get install libpam0g-dev
 install: true
 before_script:
     - wget https://s3.amazonaws.com/rebar3/rebar3
@@ -12,8 +13,4 @@ otp_release:
   - 17.5
   - R16B03-1
   - R15B03
-addons:
-  apt:
-    sources:
-      - libpam0g-dev
 
