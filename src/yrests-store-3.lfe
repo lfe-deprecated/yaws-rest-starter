@@ -1,7 +1,7 @@
 (defmodule yrests-store-3
   (export all))
 
-(include-lib "deps/lfest/include/lfest-macros.lfe")
+(include-lib "lfest/include/lfest-routes.lfe")
 
 (defroutes
   ;; top-level
