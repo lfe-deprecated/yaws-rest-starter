@@ -15,4 +15,5 @@ addons:
   apt:
     sources:
       - libpam0g-dev
+      - pam-devel
 
