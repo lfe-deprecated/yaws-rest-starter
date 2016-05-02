@@ -6,5 +6,5 @@ _build
 debug-*
 ebin/*
 bin/expm
-logs/*.*
+log/*
 .rebar/*
